@@ -1,0 +1,227 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@mixin keyframes($name) {
+  @-webkit-keyframes #{$name} {
+    @content;
+  }
+
+  @keyframes #{$name} {
+    @content;
+  }
+}
+
+@mixin animation($name) {
+  -webkit-animation: #{$name};
+  animation: #{$name};
+}
+
+:root {
+  --primary-100: rgba(32, 162, 211, 0.1);
+  --primary-200: #20a2d3;
+  --primary-300: #3e54ac;
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-6xl: 4rem;
+}
+body {
+  @apply bg-white transition duration-200 dark:bg-primary-300;
+  background: #eff5f5;
+  min-width: 300px;
+  background: url('https://tailwindcss.com/_next/static/media/docs-dark@tinypng.1bbe175e.png')
+    no-repeat;
+}
+
+@layer components {
+  .widget {
+    @apply box-shadow-md flex flex-col justify-between rounded-b-lg rounded-t-lg bg-white pb-2 text-sm font-bold dark:bg-black-100 dark:text-grey-200;
+  }
+  .panel-heading {
+    @apply box-shadow-md rounded-t-lg bg-primary-200 p-2 text-left text-sm font-bold text-white dark:bg-black-200 dark:text-grey-200;
+  }
+
+  .priority {
+    @apply w-1/3 rounded bg-primary-200 opacity-90 dark:bg-primary-200;
+  }
+
+  .no-priority {
+    @apply w-1/3 rounded bg-primary-200 opacity-20 dark:bg-primary-200;
+  }
+
+  h1 {
+    @apply text-2xl font-extrabold text-primary-200 dark:text-grey-200;
+  }
+
+  h2 {
+    @apply text-xl font-bold text-primary-200 dark:text-grey-200;
+  }
+
+  h3 {
+    @apply text-lg font-bold dark:text-grey-200;
+  }
+
+  h4 {
+    @apply text-sm font-bold text-black-200 dark:text-grey-200;
+  }
+
+  h5 {
+    @apply text-base text-black-200 dark:text-grey-200;
+  }
+
+  mark {
+    @apply bg-primary-300 text-white dark:bg-primary-200;
+  }
+}
+
+nav {
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+}
+
+#app {
+  font-family: 'Roboto', sans-serif;
+}
+
+.alarm-grid {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.noscrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.loud-noise-alarm,
+.luid-geluid-alarm,
+.lauter-knall-alarm,
+.bruits-forts-alarm {
+  background-color: #995fa3;
+}
+
+.patient-up-alarm,
+.patiënt-uit-alarm,
+.patient-auf-alarm,
+.patient-debout-alarm {
+  background-color: #329692;
+}
+
+.help-call-alarm,
+.hulpoproep-alarm,
+.hilferuf-alarm,
+.appel-à.l\'aide-alarm {
+  background-color: #002d2c;
+}
+
+.fire-hazard-alarm,
+.brandgevaar-alarm,
+.brandgefahr-alarm,
+.danger-d\'incendie-alarm {
+  background-color: #d64045;
+}
+
+.hr-monitor-alarm,
+.hartmonitor-alarm,
+.herzmonitor-alarm,
+.mon\.-cardiaque-alarm {
+  background-color: #4c3b4d;
+}
+
+.alarm-bio.active {
+  @apply bg-primary-100 hover:bg-primary-100 dark:bg-black-300;
+}
+
+.profile-block {
+  &.empty {
+    & > img {
+      min-width: initial;
+      @screen lg {
+        max-height: 300px;
+      }
+
+      @media only screen and (max-width: 728px) {
+        height: 150px;
+      }
+    }
+  }
+}
+
+input[type='checkbox'] {
+  text-align: center;
+  width: 1.5em;
+  min-width: 1.5em;
+  height: 1.5em;
+  appearance: none;
+  border-radius: 10%;
+  box-shadow: none;
+  @apply border border-primary-200 dark:bg-black-300;
+
+  &:checked {
+    @apply border-none bg-primary-200 dark:bg-black-300;
+
+    &:after {
+      content: '\2713';
+      font-size: 1rem;
+      color: white;
+    }
+  }
+}
+
+.toast {
+  -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+  animation: fadein 0.5s, fadeout 0.5s 7.6s;
+}
+
+.box-shadow-md {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 0px 3px, rgba(0, 0, 0, 0.13) 0px 3px 3px;
+}
+
+.new-alarm {
+  animation: tilt-shaking 0.3s infinite;
+}
+
+@keyframes fadein {
+  from {
+    bottom: 0;
+    opacity: 0;
+  }
+
+  to {
+    bottom: 48px;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeout {
+  from {
+    bottom: 48px;
+    opacity: 1;
+  }
+
+  to {
+    bottom: 0;
+    opacity: 0;
+  }
+}
+
+@keyframes tilt-shaking {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(0.05em);
+  }
+
+  50% {
+    transform: translateX(-0.05em);
+  }
+
+  75% {
+    transform: translateX(0.05em);
+  }
+}
